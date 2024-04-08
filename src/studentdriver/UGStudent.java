@@ -14,25 +14,25 @@ public UGStudent(String studentName, int studentID, boolean isEnrolled, boolean 
     this.coursesEnrolled = coursesEnrolled;
     }
 
-    /**
-     * @return the scholarshipAmount
-     */
     public double getScholarshipAmount() {
         return scholarshipAmount;
     }
-
-    /**
-     * @return the coursesEnrolled
-     */
     public int getCoursesEnrolled() {
         return coursesEnrolled;
     }
-
-    /**
-     * @return the hasScholarship
-     */
     public boolean isHasScholarship() {
         return hasScholarship;
+    }
+    
+    @Override
+    public double getPayableAmount(){
+        double payableAmount = super.getCREDITS_PER_COURSE() * super.getPER_CREDIT_FEE()+ this.ADDITIONAL_FEE;
+        return payableAmount;
+    }
+    
+    @Override
+   public String toString(){
+       return "Student name: " + this.getStudentName() + "\nStudent id: " + this.getStudentID() + "\nEnrolled: " + this.getIsEnrolled() + "\nScholarship: " + this.hasScholarship + "\nSchoalrship Amount: " + this.scholarshipAmount + "\nCourses Enrolled: " + this.coursesEnrolled + "\nPayable Amount: " + this.getPayableAmount();
     }
 
 

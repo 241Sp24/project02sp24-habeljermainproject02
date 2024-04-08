@@ -29,7 +29,7 @@ abstract class StudentFees {
     public void setStudentID(int studentID) {
         this.studentID = studentID;
     }
-    public boolean isIsEnrolled() {
+    public boolean getIsEnrolled() {
         return isEnrolled;
     }
     public void setIsEnrolled(boolean isEnrolled) {
@@ -42,7 +42,7 @@ abstract class StudentFees {
         return PER_CREDIT_FEE;
     }
     
-    abstract double getPayableAmount(double CREDITS_PER_COURSE, double PER_CREDIT_FEE);
+    abstract double getPayableAmount();
     
     @Override
    public String toString(){
