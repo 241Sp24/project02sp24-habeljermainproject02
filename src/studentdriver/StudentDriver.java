@@ -27,7 +27,15 @@ public class StudentDriver {
             }else if(Integer.parseInt(info[0]) > 200){
                 int coursesEnrolled = Integer.parseInt(info[3]);
                 boolean ga = Boolean.parseBoolean(info[4]);
-                String gaType = info[5];
+                
+                String gaType;
+                if(ga == true){
+                    gaType = info[5];
+                }else{
+                    gaType = "";
+                }
+               
+                
                 studentList.add( new GraduateStudent(studentName, studentID, enrolled, coursesEnrolled, ga, gaType));
             }else{
                 boolean scholarship = Boolean.parseBoolean(info[4]);
@@ -37,9 +45,43 @@ public class StudentDriver {
             }              
             
         }
+        input.close();
         
+        Scanner scan;
+        input = new Scanner(System.in);
+        
+        System.out.print("Enter the # of UG Students: ");
+        input.nextLine();
+        System.out.print("Enter the # of Graduate Students: ");
+        input.nextLine();
+        System.out.print("Enter the # of Online Students: ");
+        input.nextLine();
+        System.out.println("\n**********Undergraduate students list**********\n");
+        
+        int count2 = 0;
+        int count3 = 0;
         for(StudentFees s: studentList){
-            System.out.println(s);
+            if(s instanceof UGStudent){
+                System.out.println(s);
+                System.out.println("");
+                
+        }
+            else if(s instanceof GraduateStudent){
+                if(count2 == 0){
+                    System.out.println("**********Graduate students list**********\n");
+                }
+                System.out.println(s);
+                System.out.println("");
+                count2++;
+            }
+            else if(s instanceof OnlineStudent){
+                if(count3 == 0){
+                    System.out.println("**********Online students list**********\n");
+                }
+                System.out.println(s);
+                System.out.println("");
+                count3++;
+            }
         }
         
       

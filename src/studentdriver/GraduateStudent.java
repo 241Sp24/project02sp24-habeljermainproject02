@@ -25,7 +25,13 @@ public class GraduateStudent extends StudentFees{
     
     @Override
     public double getPayableAmount(){
-        return super.getCREDITS_PER_COURSE() * super.getPER_CREDIT_FEE()+ this.ADDITIONAL_FEES;
+        double tuition = super.getCREDITS_PER_COURSE() * super.getPER_CREDIT_FEE()* this.coursesEnrolled + this.ADDITIONAL_FEES;
+        if(graduateAssistantType.equals("full")){
+            tuition = this.ADDITIONAL_FEES;
+        }else if(graduateAssistantType.equals("half")){
+            tuition = ((super.getCREDITS_PER_COURSE() * super.getPER_CREDIT_FEE() * this.coursesEnrolled) / 2 + this.ADDITIONAL_FEES);
+        }
+        return tuition;
     }
     
     @Override

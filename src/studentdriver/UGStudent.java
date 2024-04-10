@@ -26,13 +26,21 @@ public UGStudent(String studentName, int studentID, boolean isEnrolled, boolean 
     
     @Override
     public double getPayableAmount(){
-        double payableAmount = super.getCREDITS_PER_COURSE() * super.getPER_CREDIT_FEE()+ this.ADDITIONAL_FEE;
+        double payableAmount = super.getCREDITS_PER_COURSE() * super.getPER_CREDIT_FEE() * this.coursesEnrolled+ this.ADDITIONAL_FEE;
+        if(hasScholarship == true){
+            payableAmount = payableAmount - this.scholarshipAmount;
+}
+        if(super.getIsEnrolled() == false){
+            payableAmount = 0;
+        }
         return payableAmount;
-    }
-    
+        }
+   
+
+ 
     @Override
    public String toString(){
-       return "Student name: " + this.getStudentName() + "\nStudent id: " + this.getStudentID() + "\nEnrolled: " + this.getIsEnrolled() + "\nScholarship: " + this.hasScholarship + "\nSchoalrship Amount: " + this.scholarshipAmount + "\nCourses Enrolled: " + this.coursesEnrolled + "\nPayable Amount: " + this.getPayableAmount();
+       return "Student name: " + this.getStudentName() + "\nStudent id: " + this.getStudentID() + "\nEnrolled: " + this.getIsEnrolled() + "\nScholarship: " + this.hasScholarship + "\nScholarship Amount: " + this.scholarshipAmount + "\nCourses Enrolled: " + this.coursesEnrolled + "\nPayable Amount: " + this.getPayableAmount();
     }
 
 
