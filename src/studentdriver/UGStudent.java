@@ -2,18 +2,21 @@ package studentdriver;
 
 
 public class UGStudent extends StudentFees {
+    //Instance Variables
     private double scholarshipAmount;
     private int coursesEnrolled;
     private boolean hasScholarship;
     private double ADDITIONAL_FEE = 820.70;
     
-public UGStudent(String studentName, int studentID, boolean isEnrolled, boolean hasScholarship, double scholarshipAmount, int coursesEnrolled){
-    super(studentName, studentID, isEnrolled);
-    this.hasScholarship = hasScholarship;
-    this.scholarshipAmount = scholarshipAmount;
-    this.coursesEnrolled = coursesEnrolled;
+    //Constructor
+    public UGStudent(String studentName, int studentID, boolean isEnrolled, boolean hasScholarship, double scholarshipAmount, int coursesEnrolled){
+        super(studentName, studentID, isEnrolled);
+        this.hasScholarship = hasScholarship;
+        this.scholarshipAmount = scholarshipAmount;
+        this.coursesEnrolled = coursesEnrolled;
     }
 
+    //Getters/Setters
     public double getScholarshipAmount() {
         return scholarshipAmount;
     }
@@ -24,6 +27,7 @@ public UGStudent(String studentName, int studentID, boolean isEnrolled, boolean 
         return hasScholarship;
     }
     
+    //Abstract Method
     @Override
     public double getPayableAmount(){
         double payableAmount = super.getCREDITS_PER_COURSE() * super.getPER_CREDIT_FEE() * this.coursesEnrolled+ this.ADDITIONAL_FEE;
@@ -37,9 +41,9 @@ public UGStudent(String studentName, int studentID, boolean isEnrolled, boolean 
         }
    
 
- 
+    //toString
     @Override
-   public String toString(){
+    public String toString(){
        return "Student name: " + this.getStudentName() + "\nStudent id: " + this.getStudentID() + "\nEnrolled: " + this.getIsEnrolled() + "\nScholarship: " + this.hasScholarship + "\nScholarship Amount: " + this.scholarshipAmount + "\nCourses Enrolled: " + this.coursesEnrolled + "\nPayable Amount: " + this.getPayableAmount();
     }
 
